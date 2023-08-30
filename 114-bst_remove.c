@@ -33,12 +33,12 @@ bst_t *bst_delete(bst_t *root, bst_t *node)
 	/* No sibling of the parent */
 	if (node->left == NULL)
 	{
-		if (parent_node_created != NULL && parent->left == node)
-			parent->left = node->right;
+		if (parent_node_created != NULL && parent_node_created->left == node)
+			parent_node_created->left = node->right;
 		else if (parent_node_created != NULL)
-			parent->right = node->right;
+			parent_node_created->right = node->right;
 		if (node->right != NULL)
-			node->right->parent = parent;
+			node->right->parent = parent_node_created;
 		free(node);
 		return (parent_node_created == NULL ? node->right : root);
 	}
@@ -46,14 +46,14 @@ bst_t *bst_delete(bst_t *root, bst_t *node)
 	/* Left sibling will be checked onmly */
 	if (node->right == NULL)
 	{
-		if (parent_node_checked != NULL && parent->left == node)
-			parent->left = node->left;
-		else if (parent_node_checked != NULL)
-			parent->right = node->left;
+		if (parent_node_created != NULL && parent_node_created->left == node)
+			parent_node_created->left = node->left;
+		else if (parent_node_created != NULL)
+			parent_node_created->right = node->left;
 		if (node->left != NULL)
-			node->left->parent = parent;
+			node->left->parent = parent_node_created;
 		free(node);
-		return (parent_node_checked == NULL ? node->left : root);
+		return (parent_node_created == NULL ? node->left : root);
 	}
 
 	/* The number of siblings are 2 */
