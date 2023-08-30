@@ -19,7 +19,7 @@ size_t height(const binary_tree_t *tree)
 
 		light_node = tree->left ? 1 + binary_tree_height(tree->left) : 1;
 		ready_node = tree->right ? 1 + binary_tree_height(tree->right) : 1;
-		return ((light_node > ready_node) ? l : r);
+		return ((light_node > ready_node) ? light_node : ready_node);
 	}
 	return (0);
 }
