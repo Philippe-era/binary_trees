@@ -15,7 +15,7 @@ heap_t *array_to_heap(int *array, size_t size)
 
 	for (initial = 0; initial < size; initial++)
 	{
-		heap_insert(&tree, array[initial]);
+		heap_insert(&tree_new, array[initial]);
 	}
 
 	return (tree_new);

@@ -124,9 +124,9 @@ int heap_extract(heap_t **root)
 		return (0);
 
 	highest_value = (*root)->n;
-	perfect_index = count_heap_nodes(*root);
+	perfect_node = count_heap_nodes(*root);
 
-	perfect_index = (perfect_index - 2) / 2;
+	perfect_index = (perfect_node - 2) / 2;
 	parent_node = get_parent(*root, 0, perfect_index);
 
 	remove_last_node(root, parent_node);
