@@ -59,16 +59,16 @@ void swap(heap_t **arg_node, heap_t **arg_child)
 	int siblings;
 
 	node_check = *arg_node, child = *arg_child;
-	if (child->n > node->n)
+	if (child->n > node_check->n)
 	{
 		if (child->left)
 			child->left->parent = node_check;
 		if (child->right)
 			child->right->parent = node_check;
-		if (node->left == child)
-			node_kids = node->right, siblings = 0;
+		if (node_check->left == child)
+			node_kids = node_check->right, siblings = 0;
 		else
-			node_kids = node->left, siblings = 1;
+			node_kids = node_check->left, siblings = 1;
 		left_node = child->left, right_node = child->right;
 		if (siblings == 0)
 		{
@@ -84,16 +84,16 @@ void swap(heap_t **arg_node, heap_t **arg_child)
 				node_kids->parent = child;
 			child->right = node_check;
 		}
-		if (node->parent)
+	if (node_check->parent)
 		{
-			if (node->parent->left == node_check)
-				node->parent->left = child;
+			if (node_check->parent->left == node_check)
+				node_check->parent->left = child;
 			else
-				node->parent->right = child;
+				node_check->parent->right = child;
 		}
-		parent = node->parent, child->parent = parent;
-		node->parent = child, node->left = left_node;
-		node->right = right_node, *arg_node = child;
+		parent = node_check->parent; child->parent = parent;
+		node_check->parent = child; node_check->left = left_node;
+		node_check->right = right_node; *arg_node = child;
 	}
 }
 
